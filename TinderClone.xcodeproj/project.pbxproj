@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E58D4357229CEF7600193F86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D4356229CEF7600193F86 /* AppDelegate.swift */; };
-		E58D4359229CEF7600193F86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D4358229CEF7600193F86 /* ViewController.swift */; };
+		E58D4359229CEF7600193F86 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D4358229CEF7600193F86 /* HomeController.swift */; };
 		E58D435C229CEF7600193F86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E58D435A229CEF7600193F86 /* Main.storyboard */; };
 		E58D435E229CEF7700193F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E58D435D229CEF7700193F86 /* Assets.xcassets */; };
 		E58D4361229CEF7700193F86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E58D435F229CEF7700193F86 /* LaunchScreen.storyboard */; };
@@ -16,12 +16,14 @@
 		E58D436D229D004100193F86 /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D436C229D004100193F86 /* HomeBottomControlsStackView.swift */; };
 		E58D437F229D03AF00193F86 /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D437E229D03AF00193F86 /* TopNavigationStackView.swift */; };
 		E58D4381229D065100193F86 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D4380229D065100193F86 /* CardView.swift */; };
+		E58D4384229D0DF600193F86 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D4383229D0DF600193F86 /* User.swift */; };
+		E58D4389229D141700193F86 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D4388229D141700193F86 /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E58D4353229CEF7600193F86 /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58D4356229CEF7600193F86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E58D4358229CEF7600193F86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E58D4358229CEF7600193F86 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		E58D435B229CEF7600193F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E58D435D229CEF7700193F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E58D4360229CEF7700193F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +32,8 @@
 		E58D436C229D004100193F86 /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		E58D437E229D03AF00193F86 /* TopNavigationStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
 		E58D4380229D065100193F86 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		E58D4383229D0DF600193F86 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E58D4388229D141700193F86 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +66,12 @@
 		E58D4355229CEF7600193F86 /* TinderClone */ = {
 			isa = PBXGroup;
 			children = (
+				E58D4387229D140300193F86 /* ViewModels */,
+				E58D4385229D136600193F86 /* Controllers */,
+				E58D4382229D0D4A00193F86 /* Model */,
 				E58D436B229CFFF100193F86 /* Views */,
 				E58D4368229CF0EC00193F86 /* Extensions */,
 				E58D4356229CEF7600193F86 /* AppDelegate.swift */,
-				E58D4358229CEF7600193F86 /* ViewController.swift */,
 				E58D435A229CEF7600193F86 /* Main.storyboard */,
 				E58D435D229CEF7700193F86 /* Assets.xcassets */,
 				E58D435F229CEF7700193F86 /* LaunchScreen.storyboard */,
@@ -90,6 +96,30 @@
 				E58D4380229D065100193F86 /* CardView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E58D4382229D0D4A00193F86 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E58D4383229D0DF600193F86 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E58D4385229D136600193F86 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E58D4358229CEF7600193F86 /* HomeController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E58D4387229D140300193F86 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E58D4388229D141700193F86 /* CardViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,12 +193,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E58D4359229CEF7600193F86 /* ViewController.swift in Sources */,
+				E58D4359229CEF7600193F86 /* HomeController.swift in Sources */,
 				E58D436D229D004100193F86 /* HomeBottomControlsStackView.swift in Sources */,
 				E58D4357229CEF7600193F86 /* AppDelegate.swift in Sources */,
 				E58D436A229CFBE100193F86 /* Extensions+UIView.swift in Sources */,
+				E58D4389229D141700193F86 /* CardViewModel.swift in Sources */,
 				E58D4381229D065100193F86 /* CardView.swift in Sources */,
 				E58D437F229D03AF00193F86 /* TopNavigationStackView.swift in Sources */,
+				E58D4384229D0DF600193F86 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

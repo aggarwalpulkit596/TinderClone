@@ -8,11 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+import UIKit
+
+class HomeController: UIViewController {
     
     let topStackView = TopNavigationStackView()
     let cardsDeckView = UIView()
     let buttonsStackView = HomeBottomControlsStackView()
+    
+    
+    let cardViewModels = [
+        User(name: "Preksha", age: 22, profession: "Nalli", imageName: "boost_circle").toCardViewModel(),
+        User(name: "Aayushi", age: 23, profession: "Pyschologist", imageName: "lady5c").toCardViewModel()
+]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +29,15 @@ class ViewController: UIViewController {
     }
     
     fileprivate func setupDummyCards() {
-        print("Setting up dummy cards")
-        let cardView = CardView(frame: .zero)
-        cardsDeckView.addSubview(cardView)
-        cardView.fillSuperview()
+        cardViewModels.forEach{(cardVM) in
+            let cardView = CardView(frame: .zero)
+            cardView.imageView.image = UIImage(named: cardVM.imageName)
+            cardView.nameLabel.attributedText = cardVM.attributtedString
+            cardView.nameLabel.textAlignment = cardVM.textAlignment
+            cardsDeckView.addSubview(cardView)
+            cardView.fillSuperview()
+        }
+   
     }
     
     // MARK:- Fileprivate
@@ -41,6 +54,5 @@ class ViewController: UIViewController {
     }
     
 }
-
 
 

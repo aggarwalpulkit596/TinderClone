@@ -13,7 +13,8 @@ class CardView: UIView {
     fileprivate let threshold: CGFloat = 80
 
 
-    fileprivate let imageView = UIImageView(image: #imageLiteral(resourceName: "lady5c"))
+    let imageView = UIImageView(image: #imageLiteral(resourceName: "lady5c"))
+    let nameLabel = UILabel()
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -21,7 +22,18 @@ class CardView: UIView {
         clipsToBounds = true
         
         addSubview(imageView)
+        imageView.contentMode = .scaleAspectFill
         imageView.fillSuperview()
+        
+        addSubview(nameLabel)
+        
+        nameLabel.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: 16, bottom: 16, right: 16))
+        
+        nameLabel.textColor  = .white
+        nameLabel.font = UIFont.systemFont(ofSize: 34,weight: .heavy)
+        nameLabel.numberOfLines = 0
+        
+        
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         addGestureRecognizer(panGesture)
@@ -42,7 +54,7 @@ class CardView: UIView {
         let translation = gesture.translation(in: nil)
         // rotation
         // some not that scary math here to convert radians to degrees
-        let deg rees: CGFloat = translation.x / 20
+        let degrees: CGFloat = translation.x / 20
         let angle = degrees * .pi / 180
         
         let rotationalTransformation = CGAffineTransform(rotationAngle: angle)
@@ -53,7 +65,7 @@ class CardView: UIView {
         let translationDirection: CGFloat = gesture.translation(in: nil).x > 0 ? 1 : -1
         let shouldDismissCard = abs(gesture.translation(in: nil).x) > threshold
         
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
             if shouldDismissCard {
                 self.frame = CGRect(x: 1000 * translationDirection, y: 0, width: self.frame.width, height: self.frame.height)
             } else {
@@ -62,7 +74,10 @@ class CardView: UIView {
             
         }) { (_) in
             self.transform = .identity
-            self.frame = CGRect(x: 0, y: 0, width: self.superview!.frame.width, height: self.superview!.frame.height)
+            if shouldDismissCard{
+                self.removeFromSuperview()
+            }
+//            self.frame = CGRect(x: 0, y: 0, width: self.superview!.frame.width, height: self.superview!.frame.height)
         }
     }
     
