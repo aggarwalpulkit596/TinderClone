@@ -1,0 +1,6 @@
+framework module Pods_TinderClone {
+  umbrella header "Pods-TinderClone-umbrella.h"
+
+  export *
+  module * { export * }
+}
