@@ -19,8 +19,8 @@ class HomeController: UIViewController {
     
     let cardViewModels : [CardViewModel] = {
         let producers = [
-        User(name: "Preksha", age: 22, profession: "Nalli", imageNames: ["boost_circle"]),
-        User(name: "Aayushi", age: 23, profession: "Pyschologist", imageNames: ["lady5c","lady5c","lady5c","lady5c"])
+        User(name: "Preksha", age: 22, profession: "Nalli", imageNames: ["kelly1","kelly2","kelly3"]),
+        User(name: "Aayushi", age: 23, profession: "Pyschologist", imageNames: ["jane1","jane2","jane3"])
     ] as [ProdocuesCardViewModel]
         let viewModels = producers.map({return $0.toCardViewModel()})
         return viewModels
@@ -28,8 +28,16 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        topStackView.settingsButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
+        
         setupLayout()
         setupDummyCards()
+    }
+    
+    @objc func handleSettings(){
+        let registrationController  = RegistrationController()
+        present(registrationController,animated: true)
     }
     
     fileprivate func setupDummyCards() {

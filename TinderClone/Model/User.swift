@@ -20,7 +20,7 @@ struct User : ProdocuesCardViewModel{
         attributedText.append(NSAttributedString(string:" \(age)", attributes: [.font:UIFont.systemFont(ofSize: 24,weight: .regular)]))
         
         attributedText.append(NSAttributedString(string:" \n\(profession)", attributes: [.font:UIFont.systemFont(ofSize: 20,weight: .regular)]))
-        return CardViewModel(imageNames: imageNames, attributtedString: attributedText,textAlignment: .left)
+        return CardViewModel(imageName: imageNames, attributtedString: attributedText,textAlignment: .left)
 
     }
 }
