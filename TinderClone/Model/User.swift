@@ -8,11 +8,11 @@
 
 import UIKit
 
-struct User {
+struct User : ProdocuesCardViewModel{
     let name:String
     let age:Int
     let profession:String
-    let imageName:String
+    let imageNames:[String]
     
     func toCardViewModel() -> CardViewModel {
         let attributedText = NSMutableAttributedString(string: name, attributes: [.font:UIFont.systemFont(ofSize: 32,weight: .heavy)])
@@ -20,7 +20,7 @@ struct User {
         attributedText.append(NSAttributedString(string:" \(age)", attributes: [.font:UIFont.systemFont(ofSize: 24,weight: .regular)]))
         
         attributedText.append(NSAttributedString(string:" \n\(profession)", attributes: [.font:UIFont.systemFont(ofSize: 20,weight: .regular)]))
-        return CardViewModel(imageName: imageName, attributtedString: attributedText,textAlignment: .left)
+        return CardViewModel(imageNames: imageNames, attributtedString: attributedText,textAlignment: .left)
 
     }
 }
