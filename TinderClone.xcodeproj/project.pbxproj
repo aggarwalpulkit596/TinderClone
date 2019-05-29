@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,8 @@
 		E58D438B229D33E800193F86 /* RegistrationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D438A229D33E800193F86 /* RegistrationControllerViewController.swift */; };
 		E58D438D229D3DFB00193F86 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D438C229D3DFB00193F86 /* CustomTextField.swift */; };
 		E58D4394229D87F000193F86 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D4393229D87F000193F86 /* RegistrationViewModel.swift */; };
+		E5CFF9C8229E51A8006BDDBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CFF9C7229E51A8006BDDBA /* GoogleService-Info.plist */; };
+		E5CFF9CA229E616A006BDDBA /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CFF9C9229E616A006BDDBA /* Bindable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		E58D438A229D33E800193F86 /* RegistrationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationControllerViewController.swift; sourceTree = "<group>"; };
 		E58D438C229D3DFB00193F86 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E58D4393229D87F000193F86 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		E5CFF9C7229E51A8006BDDBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E5CFF9C9229E616A006BDDBA /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 				E58D435A229CEF7600193F86 /* Main.storyboard */,
 				E58D435D229CEF7700193F86 /* Assets.xcassets */,
 				E58D435F229CEF7700193F86 /* LaunchScreen.storyboard */,
+				E5CFF9C7229E51A8006BDDBA /* GoogleService-Info.plist */,
 				E58D4362229CEF7700193F86 /* Info.plist */,
 			);
 			path = TinderClone;
@@ -116,6 +121,7 @@
 				E58D436C229D004100193F86 /* HomeBottomControlsStackView.swift */,
 				E58D4380229D065100193F86 /* CardView.swift */,
 				E58D438C229D3DFB00193F86 /* CustomTextField.swift */,
+				E5CFF9C9229E616A006BDDBA /* Bindable.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,7 +158,6 @@
 				00953DDBD1694EDCDF91F00C /* Pods-TinderClone.debug.xcconfig */,
 				D077BE7596C4DBC56112B947 /* Pods-TinderClone.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -217,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E58D4361229CEF7700193F86 /* LaunchScreen.storyboard in Resources */,
+				E5CFF9C8229E51A8006BDDBA /* GoogleService-Info.plist in Resources */,
 				E58D435E229CEF7700193F86 /* Assets.xcassets in Resources */,
 				E58D435C229CEF7600193F86 /* Main.storyboard in Resources */,
 			);
@@ -273,6 +279,7 @@
 			files = (
 				E58D4359229CEF7600193F86 /* HomeController.swift in Sources */,
 				E58D4394229D87F000193F86 /* RegistrationViewModel.swift in Sources */,
+				E5CFF9CA229E616A006BDDBA /* Bindable.swift in Sources */,
 				E58D436D229D004100193F86 /* HomeBottomControlsStackView.swift in Sources */,
 				E58D4357229CEF7600193F86 /* AppDelegate.swift in Sources */,
 				E58D436A229CFBE100193F86 /* Extensions+UIView.swift in Sources */,
@@ -435,7 +442,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.maxx.TinderClone;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pulkit.Flash-Chat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -454,7 +461,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.maxx.TinderClone;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pulkit.Flash-Chat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

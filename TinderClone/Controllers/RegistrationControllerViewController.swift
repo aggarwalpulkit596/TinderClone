@@ -7,6 +7,18 @@
 //
 
 import UIKit
+import FirebaseAuth
+import JGProgressHUD
+
+extension RegistrationController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+        registationViewModel.bindableImage.value = image
+    }
+}
 
 class RegistrationController: UIViewController {
     
@@ -18,6 +30,9 @@ class RegistrationController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         button.heightAnchor.constraint(equalToConstant: 275).isActive = true
         button.layer.cornerRadius = 16
+        button.addTarget(self, action: #selector(selectPhoto), for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.clipsToBounds = true
         return button
     }()
     
@@ -67,10 +82,9 @@ class RegistrationController: UIViewController {
         button.isEnabled = false
         button.heightAnchor.constraint(equalToConstant: 44).isActive = true
         button.layer.cornerRadius = 22
+        button.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
         return button
     }()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,20 +97,56 @@ class RegistrationController: UIViewController {
     
     // MARK:- Private
     
+    @objc fileprivate func selectPhoto() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true)
+    }
+
+    
+    @objc fileprivate func registerUser() {
+        self.handleTapDismiss()
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password)
+        { (res, err) in
+            if let err = err {
+                print(err)
+                self.showHUDWithError(error:err)
+                return
+            }
+        }
+    }
+    
+    fileprivate func showHUDWithError(error:Error){
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Failed registration"
+        hud.detailTextLabel.text = error.localizedDescription
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 4)
+    }
+    
+    
     let registationViewModel = RegistrationViewModel()
     
     fileprivate func setupRegistrationObserver(){
-        registationViewModel.isFormValidObserver = {(isFormValid) in
-                    self.registerButton.isEnabled = isFormValid
-                    if(isFormValid){
-                        self.registerButton.backgroundColor =  #colorLiteral(red: 0.8980392157, green: 0, blue: 0.4470588235, alpha: 1)
-                        self.registerButton.setTitleColor(.white, for: .normal)
-                    }else{
-                        self.registerButton.backgroundColor = .lightGray
-                        self.registerButton.setTitleColor(.gray, for: .disabled)
-                    }
-
+        registationViewModel.bindableisFormValid.bind { [unowned self](isFormValid) in
+            guard let isFormValid =  isFormValid else { return }
+            self.registerButton.isEnabled = isFormValid
+            if(isFormValid){
+                self.registerButton.backgroundColor =  #colorLiteral(red: 0.8980392157, green: 0, blue: 0.4470588235, alpha: 1)
+                self.registerButton.setTitleColor(.white, for: .normal)
+            }else{
+                self.registerButton.backgroundColor = .lightGray
+                self.registerButton.setTitleColor(.gray, for: .disabled)
+            }
         }
+    
+        registationViewModel.bindableImage.bind(observer: { [unowned self](img) in
+            self.selectPhotoButton.setImage(img?.withRenderingMode(.alwaysOriginal), for: .normal)
+            self.dismiss(animated: true, completion: nil)
+        })
     }
     
     fileprivate func setupTagGesture(){

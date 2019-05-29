@@ -6,9 +6,13 @@
 //  Copyright © 2019 Pulkit Aggarwal. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class RegistrationViewModel {
+    
+    var bindableImage = Bindable<UIImage>()
+    var bindableisFormValid = Bindable<Bool>()
+
     
     var fullName: String? {didSet{
         checkFormValidity()
@@ -25,9 +29,8 @@ class RegistrationViewModel {
     
     fileprivate func checkFormValidity(){
         let isFormVaid = fullName?.isEmpty == false && email?.isEmpty == false && password?.isEmpty == false
-        isFormValidObserver?(isFormVaid)
+        bindableisFormValid.value = isFormVaid
     }
     
-    var isFormValidObserver: ((Bool) -> ())?
     
 }
