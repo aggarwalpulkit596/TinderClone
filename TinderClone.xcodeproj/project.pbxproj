@@ -24,6 +24,7 @@
 		E58D4394229D87F000193F86 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D4393229D87F000193F86 /* RegistrationViewModel.swift */; };
 		E5CFF9C8229E51A8006BDDBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CFF9C7229E51A8006BDDBA /* GoogleService-Info.plist */; };
 		E5CFF9CA229E616A006BDDBA /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CFF9C9229E616A006BDDBA /* Bindable.swift */; };
+		E5DBADDB22A2345B007A20B5 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBADDA22A2345B007A20B5 /* SettingsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		E58D4393229D87F000193F86 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E5CFF9C7229E51A8006BDDBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5CFF9C9229E616A006BDDBA /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		E5DBADDA22A2345B007A20B5 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			children = (
 				E58D4358229CEF7600193F86 /* HomeController.swift */,
 				E58D438A229D33E800193F86 /* RegistrationControllerViewController.swift */,
+				E5DBADDA22A2345B007A20B5 /* SettingsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E58D4359229CEF7600193F86 /* HomeController.swift in Sources */,
+				E5DBADDB22A2345B007A20B5 /* SettingsController.swift in Sources */,
 				E58D4394229D87F000193F86 /* RegistrationViewModel.swift in Sources */,
 				E5CFF9CA229E616A006BDDBA /* Bindable.swift in Sources */,
 				E58D436D229D004100193F86 /* HomeBottomControlsStackView.swift in Sources */,
