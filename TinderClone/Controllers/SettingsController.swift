@@ -153,14 +153,18 @@ class SettingsController: UITableViewController,UIImagePickerControllerDelegate,
         case 1:
             cell.textField.placeholder = "Enter Name"
             cell.textField.text = user?.name
+            cell.textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         case 2:
             cell.textField.placeholder = "Enter Profession"
             cell.textField.text = user?.profession
+            cell.textField.addTarget(self, action: #selector(handleProfessionChange), for: .editingChanged)
         case 3:
             cell.textField.placeholder = "Enter Age"
+            cell.textField.keyboardType = .numberPad
             if let age = user?.age {
                 cell.textField.text = String(age)
             }
+            cell.textField.addTarget(self, action: #selector(handleAgeChange), for: .editingChanged)
         default:
             cell.textField.placeholder = "Enter Bio"
 
@@ -168,12 +172,30 @@ class SettingsController: UITableViewController,UIImagePickerControllerDelegate,
         return cell
     }
     
+    @objc fileprivate func handleTextChange(textField:UITextField){
+        self.user?.name = textField.text
+    }
+    
+    @objc fileprivate func handleProfessionChange(textField:UITextField){
+        self.user?.profession = textField.text
+
+    }
+    
+    @objc fileprivate func handleAgeChange(textField:UITextField){
+        self.user?.age = Int(textField.text ?? "")
+
+    }
+    
+    @objc fileprivate func handleChange(textField:UITextField){
+        
+    }
+    
     fileprivate func setupNavigationItems() {
         navigationItem.title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleCancel)),
+            UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave)),
             UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleCancel))
         ]
     }
@@ -181,5 +203,28 @@ class SettingsController: UITableViewController,UIImagePickerControllerDelegate,
     @objc fileprivate func handleCancel(){
         dismiss(animated: true)
     }
+    
+    
+    @objc fileprivate func handleSave(){
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let docData: [String:Any] = [
+            "uid": uid,
+            "fullName": user?.name ?? "",
+            "profession": user?.profession ?? "",
+            "age" : user?.age ?? -1,
+            "imageUrl1":user?.imageUrl1 ?? ""]
+        
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Saving Settings..."
+        hud.show(in: view)
+        Firestore.firestore().collection("users").document(uid).setData(docData){(err) in
+            hud.dismiss()
+            if let err = err{
+                print("There was some error:",err)
+                return
+            }
+        }
+    }
+    
     
 }
