@@ -25,6 +25,7 @@
 		E5CFF9C8229E51A8006BDDBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CFF9C7229E51A8006BDDBA /* GoogleService-Info.plist */; };
 		E5CFF9CA229E616A006BDDBA /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CFF9C9229E616A006BDDBA /* Bindable.swift */; };
 		E5DBADDB22A2345B007A20B5 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBADDA22A2345B007A20B5 /* SettingsController.swift */; };
+		E5DBADDD22A2D127007A20B5 /* SettingsCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBADDC22A2D127007A20B5 /* SettingsCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		E5CFF9C7229E51A8006BDDBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5CFF9C9229E616A006BDDBA /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		E5DBADDA22A2345B007A20B5 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		E5DBADDC22A2D127007A20B5 /* SettingsCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				E58D4380229D065100193F86 /* CardView.swift */,
 				E58D438C229D3DFB00193F86 /* CustomTextField.swift */,
 				E5CFF9C9229E616A006BDDBA /* Bindable.swift */,
+				E5DBADDC22A2D127007A20B5 /* SettingsCellTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				E58D4381229D065100193F86 /* CardView.swift in Sources */,
 				E58D437F229D03AF00193F86 /* TopNavigationStackView.swift in Sources */,
 				E58D438B229D33E800193F86 /* RegistrationControllerViewController.swift in Sources */,
+				E5DBADDD22A2D127007A20B5 /* SettingsCellTableViewCell.swift in Sources */,
 				E58D4384229D0DF600193F86 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
