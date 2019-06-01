@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class HomeController: UIViewController {
     
@@ -31,9 +32,8 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         
         topStackView.settingsButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
-        
+        buttonsStackView.refreshButton.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
         setupLayout()
-        setupDummyCards()
         fetchUsers()
     }
     
@@ -42,8 +42,19 @@ class HomeController: UIViewController {
         present(registrationController,animated: true)
     }
     
+    @objc func handleRefresh(){
+       self.fetchUsers()
+    }
+    
+    var lastFetchedUser : User?
+    
     fileprivate func fetchUsers(){
-        Firestore.firestore().collection("users").getDocuments { (snapshot, err) in
+        let hud = JGProgressHUD.init(style: .dark)
+        hud.textLabel.text = "Fetching User..."
+        hud.show(in: view)
+        let query = Firestore.firestore().collection("users").order(by: "uid").start(at: [lastFetchedUser?.uid ?? ""]).limit(to: 1)
+            query.getDocuments { (snapshot, err) in
+                hud.dismiss()
             if let err = err {
                 print("Error getting users :",err)
                 return
@@ -51,20 +62,22 @@ class HomeController: UIViewController {
             snapshot?.documents.forEach({ (docSnapshot) in
                 let userDictinoary = docSnapshot.data()
                 let user = User(dictionary : userDictinoary)
-                
+                self.lastFetchedUser = user
                 self.cardViewModels.append(user.toCardViewModel())
+                self.setupCardForUser(user: user)
             })
-            self.setupDummyCards()
+//            self.setupDummyCards()
         }
     }
     
-    fileprivate func setupDummyCards() {
-        cardViewModels.forEach{(cardVM) in
+    fileprivate func setupCardForUser(user:User) {
+//        cardViewModels.forEach{(cardVM) in
             let cardView = CardView(frame: .zero)
-            cardView.cardViewModel = cardVM
+            cardView.cardViewModel = user.toCardViewModel()
             cardsDeckView.addSubview(cardView)
+            cardsDeckView.sendSubviewToBack(cardView)
             cardView.fillSuperview()
-        }
+//        }
    
     }
     
